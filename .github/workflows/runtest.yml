@@ -6,12 +6,12 @@ jobs:
     runs-on: macos-latest
     steps:
         - uses: actions/checkout@v1
-        - name: run all tests
-          run: 
-                swift build
-                swift test --enable-code-coverage
-                llvm-cov export -format="lcov" .build/debug/SwiftLoggerPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
-                bash <(curl https://codecov.io/bash)
+        - name: build
+          run:  swift build
+        - name: testing
+          run: swift test --enable-code-coverage
+        - name: generate repost
+          run: llvm-cov export -format="lcov" .build/debug/SwiftLoggerPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
         - name: Generate coverage report
           uses: codecov/codecov-action@v1.0.5
           with:
