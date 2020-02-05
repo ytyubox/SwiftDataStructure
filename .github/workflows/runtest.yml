@@ -5,9 +5,8 @@ jobs:
   run-macOS:
     runs-on: macos-latest
     steps:
-        - name: Check out from Git
         - uses: actions/checkout@v1
-        - name: run test
+        - name: run all tests
           run: swift package generate-xcodeproj && \
              xcodebuild test \
             -scheme SwiftDataStructure-Package \
