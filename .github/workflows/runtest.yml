@@ -7,15 +7,14 @@ jobs:
     steps:
         - uses: actions/checkout@v1
         - name: run all tests
-          run: swift package generate-xcodeproj && \
-             xcodebuild test \
-            -scheme SwiftDataStructure-Package \
-            -destination platform="macOS" \
-            -enableCodeCoverage YES \
-            -derivedDataPath .build/derivedData
+          run: 
+                swift build
+                swift test --enable-code-coverage
+                llvm-cov export -format="lcov" .build/debug/SwiftLoggerPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
+                bash <(curl https://codecov.io/bash)
         - name: Generate coverage report
           uses: codecov/codecov-action@v1.0.5
           with:
             token: 82c6532f-8a30-4012-900b-0fcbeac2661e
-            file: .build/derivedData
+            file: .build/bebug/
             fail_ci_if_error: true
