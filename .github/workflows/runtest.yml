@@ -7,4 +7,10 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Check out from Git
-        run: swift test
+        run: swift test --enable-code-coverage
+      - name: Generate coverage report
+        uses: codecov/codecov-action@v1.0.5
+        with:
+            token: 82c6532f-8a30-4012-900b-0fcbeac2661e
+            file: .build/x86_64-apple-macosx/debug/codecov/SwiftDataStructure.json
+            fail_ci_if_error: true
