@@ -8,3 +8,8 @@ jobs:
       - uses: actions/checkout@v1
       - name: Check out from Git
         run: swift test
+      - name: Codecov
+        uses: codecov/codecov-action@v1.0.5
+        with:
+            token: 82c6532f-8a30-4012-900b-0fcbeac2661e
+            fail_ci_if_error: true1
