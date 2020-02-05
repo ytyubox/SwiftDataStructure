@@ -11,8 +11,10 @@ import SwiftDataStructure
 class NodeTests: XCTestCase {
 	func testNodeCreate() {
 		let value = 1
-		let node = Node(value: value, next: nil)
+		let nextNode:Node<Int>? = nil
+		let node = Node(value: value, next: nextNode)
 		XCTAssertEqual(node.value, value)
+		XCTAssertEqual(node.next, nextNode)
 	}
 
 }

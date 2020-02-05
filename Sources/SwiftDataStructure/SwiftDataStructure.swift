@@ -11,3 +11,9 @@ public final class Node<Element> {
 	/// the referance of next node
 	public var next:Node?
 }
+
+extension Node:Equatable where Element:Equatable {
+	public static func == (lhs: Node<Element>, rhs: Node<Element>) -> Bool {
+		lhs.value == rhs.value
+	}
+}
