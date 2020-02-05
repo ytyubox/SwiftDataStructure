@@ -1,4 +1,6 @@
 name: run all test
+on: 
+    push	
 jobs:
   run-macOS:
     runs-on: macos-latest
