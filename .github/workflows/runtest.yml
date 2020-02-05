@@ -5,18 +5,18 @@ jobs:
   run-macOS:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Check out from Git
-      - name: run test
-        run: swift package generate-xcodeproj && \
+        - name: Check out from Git
+        - uses: actions/checkout@v1
+        - name: run test
+          run: swift package generate-xcodeproj && \
              xcodebuild test \
             -scheme SwiftDataStructure-Package \
             -destination platform="macOS" \
             -enableCodeCoverage YES \
             -derivedDataPath .build/derivedData
-      - name: Generate coverage report
-        uses: codecov/codecov-action@v1.0.5
-        with:
+        - name: Generate coverage report
+          uses: codecov/codecov-action@v1.0.5
+          with:
             token: 82c6532f-8a30-4012-900b-0fcbeac2661e
             file: .build/derivedData
             fail_ci_if_error: true
