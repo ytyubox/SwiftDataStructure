@@ -1,3 +1,6 @@
+codecov:
+  require_ci_to_pass: yes
+  token: 82c6532f-8a30-4012-900b-0fcbeac2661e
 coverage:
   ignore:
     - "Examples"
@@ -6,8 +9,4 @@ coverage:
 comment:
   layout: "reach, diff, flags, files"
   behavior: default
-  require_changes: false  # if true: only post the comment if coverage changes
-  require_base: no        # [yes :: must have a base report to post]
-  require_head: yes       # [yes :: must have a head report to post]
-  branches:               # branch names that can post comment
-    - "master"
+  require_changes: no]
