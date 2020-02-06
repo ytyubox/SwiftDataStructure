@@ -1,15 +1,11 @@
 //
-//  File.swift
+//  Polynomial_1.swift
 //  
 //
 //  Created by 游宗諭 on 2020/2/6.
 //
 
 import Foundation
-struct InitError:Error {
-	init(_ message: String) {self.message = message}
-	let message: String
-}
 
 public class Polynomial_1 {
 	public init(degree: Int, coef: [Float]) throws {
