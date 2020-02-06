@@ -42,3 +42,36 @@ extension Polynomial_1: CustomStringConvertible {
 		return coefStringList.joined(separator: " + ")
 	}
 }
+
+// MARK: - mathematic
+extension Polynomial_1 {
+	func add(b: Polynomial_1) -> Polynomial_1 {
+		var aPos: Int = degree
+		var bPos: Int = b.degree
+		let max = Swift.max(aPos, bPos)
+		var _coefList = [Float]()
+		while aPos >= 0 && bPos >= 0 {
+			switch true {
+				case aPos > bPos:
+					_coefList.append(self.coefList[aPos])
+					aPos -= 1
+				case aPos < bPos:
+					_coefList.append(self.coefList[bPos])
+					bPos -= 1
+				default /* aPos == bPos */:
+					_coefList.append(self.coefList[aPos]+self.coefList[bPos])
+					aPos -= 1
+					bPos -= 1
+			}
+		}
+		print(_coefList)
+		return try! .init(degree: max, coef: _coefList.reversed())
+	}
+}
+
+// MARK: - Public
+extension Polynomial_1 {
+	public static func + (lhs:Polynomial_1, rhs: Polynomial_1) -> Polynomial_1 {
+		return  lhs.add(b: rhs)
+	}
+}
