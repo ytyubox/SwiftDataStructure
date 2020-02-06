@@ -1,6 +1,7 @@
 # SwiftDataStructure
 
 ![run all test](https://github.com/goodideas-studio/SwiftDataStructure/workflows/run%20all%20test/badge.svg)
+[![codecov](https://codecov.io/gh/goodideas-studio/SwiftDataStructure/branch/master/graph/badge.svg)](https://codecov.io/gh/ytyubox/Weak)
 [![Platform](https://img.shields.io/badge/platform-macos%20%7C%20ios%20%7C%20watchos%20%7C%20ipados%20%7C%20tvos-lightgrey)](https://github.com/ytyubox/Weak)
 [![Swift](https://img.shields.io/badge/Swift-5-orange.svg)](https://swift.org)
 [![Xcode](https://img.shields.io/badge/Xcode-11-blue.svg)](https://developer.apple.com/xcode)

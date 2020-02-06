@@ -1,20 +1,14 @@
 name: run all test
 on: 
-    push	
+  push
 jobs:
   run-macOS:
     runs-on: macos-latest
     steps:
-        - uses: actions/checkout@v1
-        - name: build
-          run:  swift build
-        - name: testing
-          run: swift test --enable-code-coverage
-        - name: generate repost
-          run: llvm-cov export -format="lcov" .build/debug/SwiftLoggerPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
-        - name: Generate coverage report
-          uses: codecov/codecov-action@v1.0.5
-          with:
-            token: 82c6532f-8a30-4012-900b-0fcbeac2661e
-            file: .build/bebug/
-            fail_ci_if_error: true
+      - uses: actions/checkout@v1
+      - name: Generate xcode project
+        run: swift package generate-xcodeproj
+      - name: Generate xcode test report
+        run: xcodebuild clean test -scheme SwiftDataStructure-Package -destination platform="macOS" -enableCodeCoverage YES  -derivedDataPath ./derivedData
+      - name: Generate coverage report
+        run: bash <(curl -s https://codecov.io/bash) -J '^SwiftDataStructure$' -D ./derivedData -t 82c6532f-8a30-4012-900b-0fcbeac2661e -c -X gcov
