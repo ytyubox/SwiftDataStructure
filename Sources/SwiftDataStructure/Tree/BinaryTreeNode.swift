@@ -82,7 +82,24 @@ extension BinaryTreeNode {
 	}
 }
 
-
-public class BinaryTree {
+public class BinaryTree<T> {
+	public init(_ node: BinaryTree<T>.Node) {
+		self.node = node
+	}
 	
+	public typealias Node = BinaryTreeNode<T>
+	private var node: Node
+	
+	public var children:(Node,Node)? {
+		switch node {
+		case .node(let r,_,let l): return (r,l)
+		default: return nil
+		}
+	}
+	public var value:T? {
+		switch node {
+		case .node(_,let v,_): return v
+		default: return nil
+		}
+	}
 }
