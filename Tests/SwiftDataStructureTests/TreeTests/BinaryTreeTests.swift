@@ -26,7 +26,7 @@ class BinaryTreeTests: XCTestCase {
 	func testBinaryTree() {
 		print(tree)
 		for option in [BinaryTreeNode<String>.TraverseOption.pre,.in,.post] {
-			print(option, terminator: ":\t")
+			print(option.description(tabWithMax: 5), terminator: "")
 			tree.traverse(by: option) { (str) in
 				print(str, separator: "", terminator: " ")
 			}

@@ -28,7 +28,15 @@ extension BinaryTreeNode: CustomStringConvertible {
 }
 
 extension BinaryTreeNode {
-	public enum TraverseOption {
+	public enum TraverseOption:CustomStringConvertible {
+		public var description: String {
+			switch self {
+			case .pre:  return "pre"
+			case .in:   return "in"
+			case .post: return "post"
+			}
+		}
+		
 		case pre,`in`, post
 	}
 	public func traverse(by option:TraverseOption,
